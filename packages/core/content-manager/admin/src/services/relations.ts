@@ -126,6 +126,10 @@ const relationsApi = contentManagerApi.injectEndpoints({
           endpointName,
           model: queryArgs.model,
           targetField: queryArgs.targetField,
+          // Each source entity (e.g. every component in a dynamic zone) has its own
+          // already-connected relations, so results must not be shared between them.
+          id: queryArgs.params?.id,
+          locale: queryArgs.params?.locale,
           _q: queryArgs.params?._q,
           idsToOmit: queryArgs.params?.idsToOmit,
           idsToInclude: queryArgs.params?.idsToInclude,
